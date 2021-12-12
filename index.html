@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEME</title>
+    <style>
+body{
+    background-color:papayawhip;
+}
+body:hover{
+  background-color:honeydew;
+}
+h1{
+  text-align: center;
+  color:crimson;
+  font-weight: bolder;
+  font-size: 50px;
+  background-color: yellow;
+}
+  .image{
+      height: 50vh;
+      width: 60vw;
+      margin-left: 300px;
+  }
+  h1:hover{
+      color: yellow;
+      background-color: brown;
+  }
+  button{
+      color: brown;
+      background-color: bisque;
+      margin-left: 590px;
+      margin-bottom: 50px;
+      font-weight:bolder;
+      font-size: larger;
+      width: 15vw;
+      height: 10vh;
+      border: none;
+  }
+  button:hover{
+    color: whitesmoke;
+    background-color:cornflowerblue;
+  }
+    </style>
+    
+</head>
+<body>
+    <h1 id="c1">Memes</h1>
+    <button>Change the memes</button>
+    <div>
+    </div>
+    <script>
+fetch('https://meme-api.herokuapp.com/gimme')
+.then(res=>res.json())
+    .then(info => {
+        
+            let url = info.url;
+            let div = document.querySelector('div');
+            div.innerHTML = "<img src='" + url + "' class='image'>";
+        })
+function changememe() {
+location.reload();
+}
+document.querySelector('button').addEventListener('click', changememe);
+   
+    </script>
+</body>
+
+
